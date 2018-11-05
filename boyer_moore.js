@@ -3,16 +3,16 @@ exports.indexOf = function (sub, str) {
     let lenSub = sub.length;
     let lenStr = str.length;    
 
-    // mcc == matching chars number
-    mcn = getMatchCharsNumber(sub, lenSub, str, lenStr, curr_pos);    
     for (;curr_pos <= lenStr - lenSub;) {
+
+        // mcc == matching chars number
+        mcn = getMatchCharsNumber(sub, lenSub, str, lenStr, curr_pos);
+        
         if (mcn === lenSub) {            
             return curr_pos;
         }
 
         curr_pos += lenSub;
-        console.log(curr_pos);
-        console.log(str.substring(curr_pos, lenStr));
     }
 
     return -1;
@@ -27,7 +27,7 @@ function getMatchCharsNumber(str1, lenStr1, str2, lenStr2, startIdx) {
         throw RangeError('start index is bigger than target string length');
     }
 
-    if (startIdx + lenStr1 > lenStr2 - 1) {
+    if (startIdx + lenStr1 > lenStr2) {
         throw RangeError('matched string is longer then searched part of target string');
     }
 
